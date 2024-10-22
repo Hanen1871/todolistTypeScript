@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import InputField from './Components/InputField';
+import Todolist from './Components/Todolist';
+export interface Todo{
+  id:number
+  todo: string,
+}
 
-function App() {
+const App:React.FC=()=> {
+  const [todo, settodo] = useState<string>("")
+  console.log(todo)
+  const [todos, settodos] = useState<Todo[]>([])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Todo app</h1>
+    
+      <InputField todo={todo} settodo={settodo} todos={todos} settodos={settodos}/>
+    <Todolist todos={todos}/>
     </div>
   );
 }
